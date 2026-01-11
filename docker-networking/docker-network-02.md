@@ -107,7 +107,7 @@ fintech@fintech-MacBook-Air ~ %
 
 ##🚀 Launch a Container in the Custom Network
 ```
-akankshabansal@Akankshas-MacBook-Air ~ % docker run -dit --name conatiner01 --net fintech-network ubuntu:14.04
+fintech@fintech-MacBook-Air ~ % docker run -dit --name conatiner01 --net fintech-network ubuntu:14.04
 Unable to find image 'ubuntu:14.04' locally
 14.04: Pulling from library/ubuntu
 a72d031efbfb: Pull complete
@@ -116,12 +116,12 @@ d1a5a1e51f25: Pull complete
 Digest: sha256:64483f3496c1373bfd55348e88694d1c4d0c9b660dee6bfef5e12f43b9933b30
 Status: Downloaded newer image for ubuntu:14.04
 a8aa815648cf462974b6e64fa59ac9931318a1957a9cec8d5a17269d6e8e8876
-akankshabansal@Akankshas-MacBook-Air ~ %
+fintech@fintech-MacBook-Air ~ %
 ```
 
 ##🔁 Verify Container in newly created Network
 ```
-akankshabansal@Akankshas-MacBook-Air ~ % docker inspect fintech-network | grep 'Containers' -A8
+fintech@fintech-MacBook-Air ~ % docker inspect fintech-network | grep 'Containers' -A8
         "Containers": {
             "a8aa815648cf462974b6e64fa59ac9931318a1957a9cec8d5a17269d6e8e8876": {
                 "Name": "conatiner01",
@@ -131,7 +131,7 @@ akankshabansal@Akankshas-MacBook-Air ~ % docker inspect fintech-network | grep '
                 "IPv6Address": ""
             }
         },
-akankshabansal@Akankshas-MacBook-Air ~ %
+fintech@fintech-MacBook-Air ~ %
 ```
 
 #📦 List Running Containers
@@ -157,3 +157,22 @@ PING google.com (142.250.191.78) 56(84) bytes of data.
 rtt min/avg/max/mdev = 19.251/20.696/22.142/1.452 ms
 root@a8aa815648cf:/#
 ```
+
+## Delete network
+```
+fintech@fintech-MacBook-Air ~ % docker network rm fintech-network
+fintech-network
+fintech@fintech-MacBook-Air ~ %
+```
+
+##List network after deletetion 
+```
+fintech@fintech-MacBook-Air ~ % docker network ls
+NETWORK ID     NAME               DRIVER    SCOPE
+0a02a79e96f7   bridge             bridge    local
+3bd57be54a6f   frontend_default   bridge    local
+0a350b9a69b3   host               host      local
+65d27fd56d89   none               null      local
+fintech@fintech-MacBook-Air ~ %
+```
+
