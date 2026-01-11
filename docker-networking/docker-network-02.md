@@ -12,7 +12,7 @@ Create a custom Docker **bridge network**, launch a container inside it, and ver
 ---
 
 ## 🔍 List Existing Docker Networks
-```docker network ls```
+```docker network ls
 
 Output:
 NETWORK ID     NAME               DRIVER    SCOPE
@@ -20,7 +20,7 @@ NETWORK ID     NAME               DRIVER    SCOPE
 3bd57be54a6f   frontend_default   bridge    local
 0a350b9a69b3   host               host      local
 65d27fd56d89   none               null      local
-
+```
 ##🌐 Create a Custom Bridge Network
 
 Create a new bridge network with a custom subnet and gateway.
@@ -30,13 +30,16 @@ Create a new bridge network with a custom subnet and gateway.
   --subnet 11.1.2.0/24 \
   --gateway 11.1.2.1 \
   fintech-network
+```
+
 
 ##📋 Verify Network Creation
+```
 fintech@fintech-MacBook-Air docker-networking % docker network ls | grep -iE 'fintech|NETWORK'
 NETWORK ID     NAME               DRIVER    SCOPE
 40c386dff88f   fintech-network    bridge    local
 fintech@fintech-MacBook-Air docker-networking %
-
+```
 ##🔎 Inspect the Custom Network
 docker inspect fintech-network
 
