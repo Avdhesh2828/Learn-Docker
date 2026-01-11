@@ -34,13 +34,10 @@ docker network create \
   fintech-network
 
 📋 Verify Network Creation
-docker network ls
-
-
-Output:
+akankshabansal@Akankshas-MacBook-Air docker-networking % docker network ls | grep -iE 'fintech|NETWORK'
 NETWORK ID     NAME               DRIVER    SCOPE
 40c386dff88f   fintech-network    bridge    local
-
+akankshabansal@Akankshas-MacBook-Air docker-networking %
 
 🔎 Inspect the Custom Network
 docker inspect fintech-network
