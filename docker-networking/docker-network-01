@@ -1,0 +1,57 @@
+# Docker Custom Bridge Network – Hands-on Guide
+
+## 🎯 Learning Objective
+Create a custom Docker **bridge network**, launch a container inside it, and verify **internet connectivity** from the container.
+
+---
+
+## 📌 Prerequisites
+- Docker installed on macOS / Linux
+- Basic Docker CLI knowledge
+
+---
+
+## 🔍 List Existing Docker Networks
+
+```bash
+docker network ls
+
+Output:
+NETWORK ID     NAME               DRIVER    SCOPE
+28c2a15588ea   bridge             bridge    local
+3bd57be54a6f   frontend_default   bridge    local
+0a350b9a69b3   host               host      local
+65d27fd56d89   none               null      local
+
+🌐 Create a Custom Bridge Network
+
+Create a new bridge network with a custom subnet and gateway.
+docker network create \
+  --driver bridge \
+  --ipam-driver default \
+  --subnet 11.1.2.0/24 \
+  --gateway 11.1.2.1 \
+  fintech-network
+
+📋 Verify Network Creation
+docker network ls
+
+
+Output:
+NETWORK ID     NAME               DRIVER    SCOPE
+40c386dff88f   fintech-network    bridge    local
+
+
+🔎 Inspect the Custom Network
+docker inspect fintech-network
+
+
+Key Details:
+
+Driver: bridge
+
+Subnet: 11.1.2.0/24
+
+Gateway: 11.1.2.1
+
+IPv4 Enabled: true
