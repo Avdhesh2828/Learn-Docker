@@ -12,7 +12,8 @@ Create a custom Docker **bridge network**, launch a container inside it, and ver
 ---
 
 ## 🔍 List Existing Docker Networks
-```docker network ls
+```
+docker network ls
 
 Output:
 NETWORK ID     NAME               DRIVER    SCOPE
@@ -24,7 +25,8 @@ NETWORK ID     NAME               DRIVER    SCOPE
 ##🌐 Create a Custom Bridge Network
 
 Create a new bridge network with a custom subnet and gateway.
-```docker network create \
+```
+docker network create \
   --driver bridge \
   --ipam-driver default \
   --subnet 11.1.2.0/24 \
@@ -41,10 +43,7 @@ NETWORK ID     NAME               DRIVER    SCOPE
 fintech@fintech-MacBook-Air docker-networking %
 ```
 ##🔎 Inspect the Custom Network
-docker inspect fintech-network
-
----
-
+```
 fintech@fintech-MacBook-Air ~ % docker inspect fintech-network
 [
     {
@@ -100,32 +99,38 @@ fintech@fintech-MacBook-Air ~ % docker inspect fintech-network
     }
 ]
 fintech@fintech-MacBook-Air ~ %
----
+```
 
 ##🚀 Launch a Container in the Custom Network
+```
 docker run -dit \
   --name conatiner01 \
   --net fintech-network \
   ubuntu:14.04
-
+```
 
 ##🔁 Verify Container Attachment to Network
+```
 docker inspect fintech-network | grep 'Containers' -A8
 
 Output:
 "Name": "conatiner01"
 "IPv4Address": "11.1.2.2/24"
+```
 
 #📦 List Running Containers
+```
 fintech@fintech-MacBook-Air ~ % docker ps
 CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS         PORTS     NAMES
 a8aa815648cf   ubuntu:14.04   "/bin/bash"   3 minutes ago   Up 3 minutes             conatiner01
-
+```
 #🔐 Access the Container
+```
 fintech@fintech-MacBook-Air ~ % docker attach a8aa815648cf
 root@a8aa815648cf:/#
-
+```
 ###🌍 Test Internet Connectivity from Container
+```
 root@a8aa815648cf:/# ping google.com
 PING google.com (142.250.191.78) 56(84) bytes of data.
 64 bytes from nuq04s43-in-f14.1e100.net (142.250.191.78): icmp_seq=1 ttl=63 time=19.2 ms
@@ -135,5 +140,4 @@ PING google.com (142.250.191.78) 56(84) bytes of data.
 2 packets transmitted, 2 received, 0% packet loss, time 1001ms
 rtt min/avg/max/mdev = 19.251/20.696/22.142/1.452 ms
 root@a8aa815648cf:/#
-
-
+```
