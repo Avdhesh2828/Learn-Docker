@@ -107,19 +107,31 @@ fintech@fintech-MacBook-Air ~ %
 
 ##🚀 Launch a Container in the Custom Network
 ```
-docker run -dit \
-  --name conatiner01 \
-  --net fintech-network \
-  ubuntu:14.04
+akankshabansal@Akankshas-MacBook-Air ~ % docker run -dit --name conatiner01 --net fintech-network ubuntu:14.04
+Unable to find image 'ubuntu:14.04' locally
+14.04: Pulling from library/ubuntu
+a72d031efbfb: Pull complete
+d1a5a1e51f25: Pull complete
+75f8eea31a63: Pull complete
+Digest: sha256:64483f3496c1373bfd55348e88694d1c4d0c9b660dee6bfef5e12f43b9933b30
+Status: Downloaded newer image for ubuntu:14.04
+a8aa815648cf462974b6e64fa59ac9931318a1957a9cec8d5a17269d6e8e8876
+akankshabansal@Akankshas-MacBook-Air ~ %
 ```
 
-##🔁 Verify Container Attachment to Network
+##🔁 Verify Container in newly created Network
 ```
-docker inspect fintech-network | grep 'Containers' -A8
-
-Output:
-"Name": "conatiner01"
-"IPv4Address": "11.1.2.2/24"
+akankshabansal@Akankshas-MacBook-Air ~ % docker inspect fintech-network | grep 'Containers' -A8
+        "Containers": {
+            "a8aa815648cf462974b6e64fa59ac9931318a1957a9cec8d5a17269d6e8e8876": {
+                "Name": "conatiner01",
+                "EndpointID": "fbcaca41f1305015bf3558b6e48ae72cda84d8c44962f43628279928e7b6bc3e",
+                "MacAddress": "c6:64:59:30:87:40",
+                "IPv4Address": "11.1.2.2/24",
+                "IPv6Address": ""
+            }
+        },
+akankshabansal@Akankshas-MacBook-Air ~ %
 ```
 
 #📦 List Running Containers
