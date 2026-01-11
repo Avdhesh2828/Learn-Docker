@@ -26,12 +26,16 @@ NETWORK ID     NAME               DRIVER    SCOPE
 
 Create a new bridge network with a custom subnet and gateway.
 ```
-docker network create \
-  --driver bridge \
-  --ipam-driver default \
-  --subnet 11.1.2.0/24 \
-  --gateway 11.1.2.1 \
-  fintech-network
+fintech@fintech-MacBook-Air ~ % docker network create --driver bridge --ipam-driver  default --subnet 11.1.2.0/24 --gateway 11.1.2.1 fintech-network
+40c386dff88f4d797358e55463928a0d66fb74c75508dd9224235a57a23281c3
+fintech@fintech-MacBook-Air ~ % docker network ls
+NETWORK ID     NAME               DRIVER    SCOPE
+0a02a79e96f7   bridge             bridge    local
+40c386dff88f   fintech-network    bridge    local
+3bd57be54a6f   frontend_default   bridge    local
+0a350b9a69b3   host               host      local
+65d27fd56d89   none               null      local
+fintech@fintech-MacBook-Air ~ %
 ```
 
 
