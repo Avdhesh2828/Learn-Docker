@@ -12,8 +12,7 @@ Create a custom Docker **bridge network**, launch a container inside it, and ver
 ---
 
 ## 🔍 List Existing Docker Networks
-
-docker network ls
+```docker network ls
 
 Output:
 NETWORK ID     NAME               DRIVER    SCOPE
@@ -25,7 +24,7 @@ NETWORK ID     NAME               DRIVER    SCOPE
 ##🌐 Create a Custom Bridge Network
 
 Create a new bridge network with a custom subnet and gateway.
-docker network create \
+```docker network create \
   --driver bridge \
   --ipam-driver default \
   --subnet 11.1.2.0/24 \
