@@ -13,7 +13,7 @@ Create a custom Docker **bridge network**, launch a container inside it, and ver
 
 ## 🔍 List Existing Docker Networks
 
-```bash
+```bash```
 docker network ls
 
 Output:
@@ -34,10 +34,10 @@ docker network create \
   fintech-network
 
 📋 Verify Network Creation
-akankshabansal@Akankshas-MacBook-Air docker-networking % docker network ls | grep -iE 'fintech|NETWORK'
+fintech@fintech-MacBook-Air docker-networking % docker network ls | grep -iE 'fintech|NETWORK'
 NETWORK ID     NAME               DRIVER    SCOPE
 40c386dff88f   fintech-network    bridge    local
-akankshabansal@Akankshas-MacBook-Air docker-networking %
+fintech@fintech-MacBook-Air docker-networking %
 
 🔎 Inspect the Custom Network
 docker inspect fintech-network
