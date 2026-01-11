@@ -12,7 +12,7 @@ Create a custom Docker **bridge network**, launch a container inside it, and ver
 ---
 
 ## 🔍 List Existing Docker Networks
-```docker network ls
+```docker network ls```
 
 Output:
 NETWORK ID     NAME               DRIVER    SCOPE
